@@ -1,0 +1,140 @@
+.container {
+    min-height: 100vh;
+    background-color: #0c9a66;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo_img_container {
+    text-align: center;
+}
+
+.logo_img {
+    width: 30%;
+}
+
+.soccer_img_container {
+    width: 100%;
+    height: 13rem;
+}
+
+.errormsg{
+    color: tomato;
+    font-weight: bold;
+}
+
+.text_container {
+    width: 100%;
+    padding: 0 2rem;
+    /* background: #eeeeee61; */
+    border-top-right-radius: 1.5rem;
+    border-top-left-radius: 1.5rem;
+}
+
+.header_primary {
+    color: white;
+    line-height: 0;
+    font-size: 1rem;
+    padding: 1rem;
+}
+
+.forgot_link {
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: underline;
+    display: block;
+
+}
+
+.p_text {
+    color: lightgray;
+
+}
+
+.btn {
+    width: 100%;
+    padding: .4rem;
+    margin-top: .7rem;
+    font-weight: bold;
+    color: #4d4d4d;
+}
+
+.input_group{
+    margin: .5rem 0;
+}
+
+
+.field_icon {
+    float: right;
+    margin-left: -25px;
+    margin-top: -25px;
+    position: relative;
+    z-index: 2;
+}
+
+.input_label{
+    color: white;
+    font-weight: 400;
+    font-size: .9rem;
+    display: none;
+    transition: all 1s;
+}
+.radio_input_label{
+    margin-right: 1rem;
+    color: lightgray;
+    font-weight: bold;
+}
+
+
+.input {
+    display: block;
+    width: 100%;
+    padding: .5rem;
+    /* padding-top: 0; */
+    /* padding-left: 0; */
+    /* border: none; */
+    /* background: transparent; */
+    /* border-bottom: 1px; */
+    /* border-bottom-color: white; */
+    /* border-bottom-style: solid; */
+    color: #4d4d4d;
+    transition: all 1s;
+}
+
+
+.input::placeholder {
+    color: #4d4d4d
+}
+
+.input:focus{
+    outline: none;
+    border: none; 
+    border-bottom: 1px; 
+    border-bottom-color: tomato;
+    border-bottom-style: solid;
+}
+
+
+.loginBtn {
+    width: 100%;
+    padding: .4rem;
+    margin-top: .7rem;
+    font-weight: bold;
+    background-color: tomato;
+    border: none;
+    outline: none;
+    color: white;
+    border-radius: .3rem;
+    display: block;
+    text-align: center;
+
+}
+
+.span_text {
+    text-decoration: underline;
+    font-weight: bold;
+    color: white;
+}

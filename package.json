@@ -8,8 +8,16 @@
     "start": "next start"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.14.0",
+    "axios": "^0.19.2",
+    "formik": "^2.1.5",
     "next": "9.5.1",
+    "next-pwa": "^3.1.1",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "yup": "^0.29.3"
+  },
+  "devDependencies": {
+    "file-loader": "^6.0.0"
   }
 }
