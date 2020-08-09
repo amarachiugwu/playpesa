@@ -37,6 +37,7 @@ export default function Login() {
           <p className={styles.p_text}>Sign in or create new account below</p>
           
           <button className={styles.btn}>&nbsp;<i className={`fab fa-google ${styles.fa_google}`}></i> Sign In With Google</button> 
+          {/* <p className={styles.seperator}>OR</p> */}
         </div>
   
         <form className={styles.text_container}>
@@ -49,7 +50,7 @@ export default function Login() {
             Login
           </a>
   
-          <p className = { styles.p_text}> Don 't have an account 
+          <p className = { styles.p_text}> Don't have an account 
             &nbsp; <span className={styles.span_text}><Link href="/auth/signup" as="/sign-up"><a>Sign Up</a></Link></span>
           </p>
   
