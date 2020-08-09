@@ -107,15 +107,7 @@ export default function Signup({region}) {
             setValidationErrors(checkErrors);
             return false
         };
-        // axios({
-        //     method: 'post',
-        //     url: 'https://playpesa.herokuapp.com/api/clubs',
-        //     data: data
-        // }).then((response) => {
-        //     console.log(response);
-        // }, (error) => {
-        //     console.log(error);
-        // });
+       
     }
 
     const validate = values => {
@@ -199,27 +191,33 @@ export default function Signup({region}) {
                     <input id="email" name="email" value={email} type="text" className={styles.input} placeholder="Email Address" onChange={handleInputChange} />
                     {validationErrors.email ? (<div className={styles.errormsg}>{validationErrors.email}</div>) : null }
                 </div>
-                <div className={styles.input_group}>
-                    <select value={country} name="user_country" className={styles.input} onChange={handleInputChange}>
-                        <option value="default" selected={true} >Country of residence</option>
-                        {region.map((data)=>(
-                            <option value={data.name} key={data.name}>{data.name}</option>
-                        ))}
-                    </select>
-                    {validationErrors.country ? (<div className={styles.errormsg}>{validationErrors.country}</div>) : null }
-                </div>
-                <div className={styles.input_group}>
-                    <select value={userState} name="user_state" className={styles.input} onChange={handleInputChange}>
-                        <option value="default" selected={true}>Select a state</option>
-                        {
-                            countryStates.map((data) => {
-                                return <option value={data.name} key={data.name}>{data.name}</option>
-                            })
-                        }
 
-                    </select>
-                    {validationErrors.userState ? (<div className={styles.errormsg}>{validationErrors.userState}</div>) : null }
-                    
+                <div className={styles.input_group_join}>
+
+                    <div>
+                        <select value={country} name="user_country" className={styles.input} onChange={handleInputChange}>
+                            <option value="default" selected={true} >Country of residence</option>
+                            {region.map((data)=>(
+                                <option value={data.name} key={data.name}>{data.name}</option>
+                            ))}
+                        </select>
+                        {validationErrors.country ? (<div className={styles.errormsg}>{validationErrors.country}</div>) : null }
+                    </div>
+
+                    <div>
+                        <select value={userState} name="user_state" className={styles.input} onChange={handleInputChange}>
+                            <option value="default" selected={true}>Select a state</option>
+                            {
+                                countryStates.map((data) => {
+                                    return <option value={data.name} key={data.name}>{data.name}</option>
+                                })
+                            }
+
+                        </select>
+                        {validationErrors.userState ? (<div className={styles.errormsg}>{validationErrors.userState}</div>) : null }
+                        
+                    </div>
+
                 </div>
                
                 <div className={styles.input_group}>
@@ -227,23 +225,30 @@ export default function Signup({region}) {
                     <i className={`fas ${eye} ${styles.field_icon}`} onClick={showPasswordHandler}></i>
                     {validationErrors.password ? (<div className={styles.errormsg}>{validationErrors.password}</div>) : null }
                 </div>
+
+                <div className={styles.input_group_join}>
         
-                <div className={styles.input_group}>
+                <div>
                     <label htmlFor="male" className={styles.radio_input_label}>
                         <input id="male" type="radio" value="Male" name="gender" className={styles.radio_input}  onChange={handleInputChange} /> 
                         Male
                     </label>
+                </div>
+                
+                <div>
                     <label htmlFor="female" className={styles.radio_input_label}>
                         <input id="female" type="radio" value="Female" name="gender" className={styles.radio_input}  onChange={handleInputChange} />
                         Female
                     </label>
+                </div>
                     {validationErrors.gender ? (<div className={styles.errormsg}>{validationErrors.gender}</div>) : null }
+
                 </div>
         
                 <input type="submit" value="Continue" className={styles.loginBtn} />
         
                 <p className={styles.p_text}> Already have an account?
-                    {' '} <span className={styles.span_text}><Link href="/auth/signup" as="/sign-up"><a>Login</a></Link></span>
+                    {' '} <span><Link href="/auth/signup" as="/sign-up"><a className={styles.span_text}>Login</a></Link></span>
                 </p>
         
     

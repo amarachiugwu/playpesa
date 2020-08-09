@@ -5,6 +5,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 1rem 0;
 }
 
 .logo_img_container {
@@ -65,6 +66,12 @@
 .input_group{
     margin: .5rem 0;
 }
+.input_group_join {
+    margin: .5rem 0;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-column-gap: .5rem;
+}
 
 
 .field_icon {
@@ -93,13 +100,8 @@
     display: block;
     width: 100%;
     padding: .5rem;
-    /* padding-top: 0; */
-    /* padding-left: 0; */
-    /* border: none; */
-    /* background: transparent; */
-    /* border-bottom: 1px; */
-    /* border-bottom-color: white; */
-    /* border-bottom-style: solid; */
+    border-radius: .2rem;
+    border: none;
     color: #4d4d4d;
     transition: all 1s;
 }

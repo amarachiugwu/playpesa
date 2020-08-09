@@ -1,0 +1,108 @@
+.container {
+    min-height: 100vh;
+    background-color: white;
+    padding: 0 1rem;
+    
+  
+}
+
+.clubType_container{
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 10px;
+}
+
+.club_amateur{
+    cursor: pointer;
+    padding: .8rem;
+    border-radius: 1rem;
+    height: 19rem;
+    background-color: #0c9a66;
+}
+.club_pro{
+    cursor: pointer;
+    padding: .8rem;
+    border-radius: 1rem;
+    background-color: #d3d3d324;
+    border: .1rem dotted black;
+    height: 19rem;
+    margin-top: 3rem;
+}
+
+.amateur_header{
+    text-align: right;
+}
+
+.amateur_h2{
+    color: white;
+    font-size: 1rem;
+}
+.pro_h2{
+    color: #737373;
+    font-size: 1rem;
+}
+
+.amateur_ul {
+    margin: 0;
+    padding: 0;
+    color: #6c6b6b;
+}
+
+.amateur_li {
+    list-style: none;
+}
+
+.fa-check-circle{
+    color: white;
+}
+
+.header_primary {
+    color: #737373;
+    font-size: 1.8rem;
+    text-align: center;
+}
+.img_container{
+    width: 100%;
+}
+
+.img_container_pro{
+    width: 100%;
+    margin: 1rem 0;
+}
+
+.img  {
+    height: 100%;
+    width: 100%;
+}
+
+.errormsg {
+    color: tomato;
+    font-weight: bold;
+}
+
+.text_container {
+    width: 100%;
+    padding: 0 2rem;
+    border-top-right-radius: 1.5rem;
+    border-top-left-radius: 1.5rem;
+}
+
+
+.p_text {
+    color: #6e6d6d;
+    font-size: 1.2rem;
+    margin: 2rem 0;
+}
+.p_text_quote {
+    color: darkgray;
+    font-size: .8rem;
+    margin: 1rem 0;
+}
+
+
+
+
+
+
+
+
