@@ -1,28 +1,13 @@
 
-import { useEffect, useState } from 'react';
+import React from 'react';
 
-import { useRouter } from 'next/router'
-
-
-import styles from '../../styles/ClubType.module.css';
-import Layout from '../../components/layout';
-import {storageGet} from '../../lib/storage';
+import styles from '../styles/ClubType.module.css';
+import Layout from '../components/layout';
 
 
 
-export default function Home() {
-  const router = useRouter();
-  
-  const [ isLoading, setLoading ] = useState(true);
+export default function ClubType(props) {  
 
-  useEffect(() => {
-    let bioData = storageGet("userBioData")
-    if (bioData) {
-      router.back()
-    }
-  }, [])
-
-  
   return (
     <Layout title="Club Type ">
 
@@ -37,7 +22,7 @@ export default function Home() {
   
         <div className={styles.clubType_container}>
 
-          <div className={styles.club_amateur}>
+          <div className={styles.club_amateur} onClick={props.changeClubType}>
 
             <div className={styles.amateur_header}>
               <i className="fas fa-check-circle"></i>
@@ -67,7 +52,7 @@ export default function Home() {
 
               <div className={styles.amateur_body}>
 
-                <div className={styles.img_container_pro}>
+                <div className={styles.img_container}>
                   <img className={styles.img} src="/assets/images/soccer.png" />
                 </div> 
 
@@ -91,6 +76,8 @@ export default function Home() {
       </div>
     
     </Layout>
+
   )
+
 }
 

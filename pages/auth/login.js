@@ -109,8 +109,14 @@ export default function Login() {
         <div className={styles.text_container}>
           <h2 className={styles.header_primary}>Welcome!</h2>
           <p className={styles.p_text}>Sign in or create new account below</p>
+
+
+          <div>
+            <button className={styles.btn}>
+              &nbsp;<i className={`fab fa-google ${styles.fa_google}`}></i> Sign In With Google
+             </button> 
+          </div>
           
-          <button className={styles.btn}>&nbsp;<i className={`fab fa-google ${styles.fa_google}`}></i> Sign In With Google</button> 
         </div>
   
         <form className={styles.text_container} onSubmit={onSubmitHandler}>
@@ -130,6 +136,7 @@ export default function Login() {
         </form>
   
       </div>
+
     
     </Layout>
   )
