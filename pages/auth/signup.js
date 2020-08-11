@@ -1,34 +1,48 @@
 import {useState} from 'react';
 
 import Link from 'next/link';
-import { useRouter } from 'next/router';
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
-
-import { Spinner } from 'reactstrap';
+import { useRouter } from 'next/router'
 
 import axios from 'axios';
 
 import styles from '../../styles/Signup.module.css';
 import Layout from '../../components/layout';
+import  {storageSave} from '../../lib/storage';
 import  {isEmpty} from '../../lib/utilities';
+import region from '../../country.json';
 
+
+
+const fetchData = async () => await axios.get('https://restcountries.eu/rest/v2/all')
+    .then(res => {
+        // console.log(res);
+        return ({
+            error: false,
+            users: res.data,
+        })
+    })
+    .catch(() => ({
+        error: true,
+        users: null,
+    }), );
 
 
 export default function Signup({region}) {
-   const router = useRouter();
-   const MySwal = withReactContent(Swal);
+    const router = useRouter();
 
+    const [countryStates, setCountryStates] = useState([]);
     const [validationErrors, setValidationErrors] = useState({});
     const [showPassword, setShowPassword] = useState('password');
     const [eye, setEye] = useState('fa-eye');
-    const [isLoading, setIsLoading] = useState(false);
-
     
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
+    const [phoneNo, setPhoneNo] = useState('');
     const [email, setEmail] = useState('');
+    const [country, setCountry] = useState('');
+    const [userState, setUserState] = useState('');
     const [password, setPassword] = useState('');
+    const [gender, setGender] = useState('');
 
 
     
@@ -39,10 +53,29 @@ export default function Signup({region}) {
 
         if (inputName === 'email') setEmail(inputText);
         if (inputName === 'password') setPassword(inputText);
+        if (inputName === 'phoneNo') setPhoneNo(inputText);
         if (inputName === 'firstName') setFirstName(inputText);
         if (inputName === 'lastName') setLastName(inputText);
+        if (inputName === 'gender') setGender(inputText);
+        if (inputName === 'user_state') setUserState(inputText);
 
-       
+        if (inputName == 'user_country') {
+            setCountry(inputText);
+
+            if (inputText == "default") return setCountryStates([]);
+           
+            region.map((data) => {
+                if (data.name == inputText) {
+                    console.log(data.states);
+                    let value = data.name;
+                    let optionalvalue = [
+                        {name: value}
+                    ]
+                    if (data.states.length == 0) return setCountryStates(optionalvalue)
+                    else return setCountryStates(data.states);
+                }
+            })
+        }
         
     }
     
@@ -59,59 +92,17 @@ export default function Signup({region}) {
     
     const submitFormHandler = (e) => {
         e.preventDefault();
-
-        router.push('/auth/club', '/club')
-
-        const postData = {
-            firstName, lastName,  email,  password
+        const data = {
+            firstName, lastName, phoneNo, email, country, userState, password, gender
         }
-
-        let checkErrors = validate(postData);
-
+        let checkErrors = validate(data);
         
         if (isEmpty(checkErrors)){
-            console.log(postData);
-            // storageSave('userBioData', data);
-            // router.push('/auth/clubType', '/clubType');
-            setIsLoading(true);
-            axios({
-                method: 'post',
-                url: 'https://playpesa.herokuapp.com/api/clubs',
-                data: postData
-            }).then((response) => {
-            setIsLoading(false)
-                console.log(response);
+            console.log(data);
+            storageSave('userBioData', data);
+            router.push('/auth/clubType', '/clubType');
 
-                if (response.status == 200) {
-                MySwal.fire({
-                    position: 'center',
-                    icon: 'success',
-                    title: <h5>Your have successfully sign up</h5>,
-                    showConfirmButton: false,
-                    timer: 1500
-                })
-                .then((result) => router.push('/auth/club', '/club'))
-                
-            }else{
-                MySwal.fire({
-                    position: 'center',
-                    icon: 'error',
-                    title: <h5>Unable to sign you up, try again</h5>,
-                    showConfirmButton: false,
-                    timer: 1500
-                })
-            }
-            })
-            .catch(function (error) {
-                console.log(error);
-            })
-            .then(function () {
-            // always executed
-                setIsLoading(false);
-                router.push('/auth/club', '/club')
-            });
-
-            }
+        }
         else {
             setValidationErrors(checkErrors);
             return false
@@ -161,6 +152,10 @@ export default function Signup({region}) {
             errors.password = 'Password must be alpha-numeric';
         }
 
+        if (!values.gender) {
+            errors.gender = 'Required';
+        } 
+
 
         return errors;
     };
@@ -171,11 +166,6 @@ export default function Signup({region}) {
     <Layout title="Signup">
 
       <div className={styles.container}>
-         {isLoading ? (
-            <div className={styles.spinner_container}>
-               <Spinner type="grow" className={styles.spinner} color="danger" />
-            </div>
-         ): null}
           
             <div className={styles.logo_img_container}>
                 <img className={styles.logo_img} src="/assets/images/logo.png" />
@@ -194,22 +184,71 @@ export default function Signup({region}) {
                 </div>
                
                 <div className={styles.input_group}>
+                    <input id="phoneNo" name="phoneNo" value={phoneNo} type="text" className={styles.input} placeholder="Phone Number" onChange={handleInputChange} />
+                    {validationErrors.phoneNo ? (<div className={styles.errormsg}>{validationErrors.phoneNo}</div>) : null }
+                </div>
+                <div className={styles.input_group}>
                     <input id="email" name="email" value={email} type="text" className={styles.input} placeholder="Email Address" onChange={handleInputChange} />
                     {validationErrors.email ? (<div className={styles.errormsg}>{validationErrors.email}</div>) : null }
                 </div>
 
-             
+                <div className={styles.input_group_join}>
+
+                    <div>
+                        <select value={country} name="user_country" className={styles.input} onChange={handleInputChange}>
+                            <option value="default" selected={true} >Country of residence</option>
+                            {region.map((data)=>(
+                                <option value={data.name} key={data.name}>{data.name}</option>
+                            ))}
+                        </select>
+                        {validationErrors.country ? (<div className={styles.errormsg}>{validationErrors.country}</div>) : null }
+                    </div>
+
+                    <div>
+                        <select value={userState} name="user_state" className={styles.input} onChange={handleInputChange}>
+                            <option value="default" selected={true}>Select a state</option>
+                            {
+                                countryStates.map((data) => {
+                                    return <option value={data.name} key={data.name}>{data.name}</option>
+                                })
+                            }
+
+                        </select>
+                        {validationErrors.userState ? (<div className={styles.errormsg}>{validationErrors.userState}</div>) : null }
+                        
+                    </div>
+
+                </div>
+               
                 <div className={styles.input_group}>
                     <input id="password" type={showPassword} value={password} name="password" className={styles.input} placeholder="Password" onChange={handleInputChange} />
                     <i className={`fas ${eye} ${styles.field_icon}`} onClick={showPasswordHandler}></i>
                     {validationErrors.password ? (<div className={styles.errormsg}>{validationErrors.password}</div>) : null }
                 </div>
 
-              
-                <input type="submit" value="Sign up" className={styles.loginBtn} />
+                <div className={styles.input_group_join}>
+        
+                <div>
+                    <label htmlFor="male" className={styles.radio_input_label}>
+                        <input id="male" type="radio" value="Male" name="gender" className={styles.radio_input}  onChange={handleInputChange} /> 
+                        Male
+                    </label>
+                </div>
+                
+                <div>
+                    <label htmlFor="female" className={styles.radio_input_label}>
+                        <input id="female" type="radio" value="Female" name="gender" className={styles.radio_input}  onChange={handleInputChange} />
+                        Female
+                    </label>
+                </div>
+                    {validationErrors.gender ? (<div className={styles.errormsg}>{validationErrors.gender}</div>) : null }
+
+                </div>
+        
+                <input type="submit" value="Continue" className={styles.loginBtn} />
         
                 <p className={styles.p_text}> Already have an account?
-                    {' '} <span><Link href="/auth/login" as="/login"><a className={styles.span_text}>Login</a></Link></span>
+                    {' '} <span><Link href="/auth/signup" as="/sign-up"><a className={styles.span_text}>Login</a></Link></span>
                 </p>
         
     
@@ -221,3 +260,13 @@ export default function Signup({region}) {
 }
 
 
+export const getStaticProps = async () => {
+
+    const res = await fetchData();
+    // console.log(region);
+    return {
+        props: {region}
+    };
+
+
+}

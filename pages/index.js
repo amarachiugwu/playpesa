@@ -27,6 +27,7 @@ export default function Home({res, region}) {
   return (
     <>
       <Login />
+        
     </>
   )
 }

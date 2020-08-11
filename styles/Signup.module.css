@@ -73,20 +73,6 @@
     grid-column-gap: .5rem;
 }
 
-.spinner_container {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    display: flex;
-    background-color: rgba(191, 189, 189, 0.50);
-    z-index: 200;
-    align-items: center;
-    justify-content: center;
-
-}
-
 
 .field_icon {
     float: right;
