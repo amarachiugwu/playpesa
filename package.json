@@ -20,8 +20,5 @@
     "sweetalert2": "^9.17.1",
     "sweetalert2-react-content": "^3.0.3",
     "yup": "^0.29.3"
-  },
-  "devDependencies": {
-    "file-loader": "^6.0.0"
   }
 }
