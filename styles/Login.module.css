@@ -5,28 +5,43 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    padding: 1rem 0;
+}
+
+.spinner_container{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    background-color: rgba(191, 189, 189, 0.50);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.spinner{
+    width: 4rem;
+    height: 4rem;
 }
 
 .logo_img_container {
     text-align: center;
 }
-
 .logo_img {
-    padding-top: 40px;
     width: 17%;
 }
-
 .soccer_img_container {
     width: 100%;
     height: 13rem;
 }
-
 .soccer_img {
     width: 100%;
-    height: auto;
-    /* object-fit: contain; */
-    /* object-position: center; */
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
 }
 
 .text_container{
@@ -37,7 +52,8 @@
 
 .header_primary{
     color: white;
-    line-height: 0;
+    line-height: .2;
+    margin-top: 1rem;
 }
 
 .forgot_link {
@@ -46,70 +62,42 @@
     text-align: center;
     text-decoration: underline;
     display: block;
-    cursor: pointer;
-    margin-bottom: 40px;
     
 }
-
 .p_text{
-    color: #eee;
-    margin: 0px;
+    color: lightgray;
     
 }
 
 .btn{
     width: 100%;
-    height: 40px;
     padding: .4rem;
-    margin: 10px 0 10px;
+    margin-top: .7rem;
     font-weight: bold;
     color: #4d4d4d;
-    border-radius: 5px;
-    outline: none;
-    border: none;
-}
-
-/* .seperator{
-    text-align: center;
-} */
-
-.btn:hover{
-    color: #eee;
-    background-color: #F9A826;
-    transition: ease-in-out .5s;
-    cursor: pointer;
 }
 
 .fa_google{
     color: #4a4acddb;
-    transition: ease-in-out .5s;
     font-size: 1rem;
-    padding-right: 20px;
-}
-
-.btn:hover .fa_google{
-    color: white;
+    margin-right: 1rem;
 }
 
 .input {
     display: block;
     width: 100%;
-    height: 40px;
+    padding: .3rem;
+    margin-bottom: .2rem;
+    border-radius: .2rem;
     border: none;
-    outline: none;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 10px;
 }
 
 .field_icon {
     float: right;
-    /* margin-left: -25px; */
-    margin-top: -35px;
-    margin-right: 15px;
+    margin-left: -25px;
+    margin-top: -25px;
     position: relative;
     z-index: 2;
-    cursor: pointer;
 }
 
 .loginBtn{
@@ -117,118 +105,19 @@
     padding: .4rem;
     margin-top: .7rem;
     font-weight: bold;
-    background-color: #F9A826;
+    background-color: #ff6347;
     border: none;
     outline: none;
     color: white;
-    border-radius: 5px;
+    border-radius: .3rem;
     display: block;
     text-align: center;
-}
 
-.loginBtn:hover{
-    background-color: #C7861E;
-    transition: ease-in-out .5s;
-    cursor: pointer;
-}
-
-.p_text,.forgot_link{
-    padding-top: 5px;
-    text-align: center;
-    text-decoration: none;
 }
 
 .span_text{
     font-weight: bold;
     color: white;
-}
-
-.span_text:hover, .forgot_link:hover{
-    text-decoration: underline;
-}
-
- /* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) { 
-    .text_container{
-    background-color:rgba(0, 0, 0, .5);
-    margin-top: 0px;
-    padding: 0 40px;
-    width: 80%;
-    }
-
-    .header_primary{
-        color: white;
-        margin-top: 70px;
-        line-height: 30px;
-    }
-
-    .p_text{
-        margin: 0px 0 10px;
-        
-    }
-
-    .btn{
-        margin: 10px 0 35px;
-    }
-
-    .btn:hover{
-        background-color: #0C9A66;
-    }
-
-    .input {
-        margin-bottom: 20px;
-    }
-    
-    .field_icon {
-        margin-top: -45px;
-    }
-
-    .loginBtn{
-        margin-top: .7rem;  
-    }
-    
-    .p_text{
-        padding-top: 20px;
-    }
-
-    .forgot_link{
-        padding-top: 0px;
-        margin-bottom: 70px;
-    }
-
-}
-
- /* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) { 
-    .text_container{
-        width: 70%;
-    }
-
-    .btn:hover{
-        background-color: #0C9A66;
-    }
-}
-
- /* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) { 
-    .btn:hover{
-        background-color: #0C9A66;
-    }
-
-    .text_container{
-        width: 60%;
-    }
-}
-
- /* Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) { 
-    .text_container{
-        width: 50%;
-    }
-
-    .btn:hover{
-        background-color: #0C9A66;
-    }
 }
 
 
