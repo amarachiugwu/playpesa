@@ -6,6 +6,26 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    padding: 1rem 0;
+}
+
+.spinner_container{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    background-color: rgba(191, 189, 189, 0.50);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.spinner{
+    width: 4rem;
+    height: 4rem;
 }
 
 .logo_img_container {
@@ -25,8 +45,8 @@
 .soccer_img {
     width: 100%;
     height: auto;
-    /* object-fit: contain; */
-    /* object-position: center; */
+    object-fit: contain;
+    object-position: center;
 }
 
 .text_container{
@@ -37,7 +57,9 @@
 
 .header_primary{
     color: white;
-    line-height: 0;
+    /* line-height: 0; */
+    line-height: .2;
+    margin-top: 1rem;
 }
 
 .forgot_link {
@@ -85,6 +107,7 @@
     transition: ease-in-out .5s;
     font-size: 1rem;
     padding-right: 20px;
+    margin-right: 1rem;
 }
 
 .btn:hover .fa_google{

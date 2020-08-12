@@ -5,10 +5,18 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 1rem 0;
 }
 
 .logo_img_container {
     text-align: center;
+}
+
+.input_group_join {
+    margin: .5rem 0;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-column-gap: .5rem;
 }
 
 .logo_img {
@@ -66,6 +74,20 @@
     margin: .5rem 0;
 }
 
+.spinner_container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    background-color: rgba(191, 189, 189, 0.50);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+
+}
+
 
 .field_icon {
     float: right;
@@ -93,13 +115,6 @@
     display: block;
     width: 100%;
     padding: .5rem;
-    /* padding-top: 0; */
-    /* padding-left: 0; */
-    /* border: none; */
-    /* background: transparent; */
-    /* border-bottom: 1px; */
-    /* border-bottom-color: white; */
-    /* border-bottom-style: solid; */
     color: #4d4d4d;
     transition: all 1s;
 }

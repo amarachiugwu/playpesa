@@ -2,9 +2,7 @@ import { useEffect, useState } from 'react';
 
 import Head from 'next/head'
 
-import styles from '../styles/Landing.module.css'
 import Login from "./auth/login";
-import Landing from "./root/landingPage";
 
 
 
@@ -24,10 +22,6 @@ const fetchData = async () => await axios.get('https://restcountries.eu/rest/v2/
 
 export default function Home({res, region}) {
   const [ isLoading, setLoading ] = useState(true);
-
-  useEffect(() => {
-
-  }, []);
 
   
   return (
